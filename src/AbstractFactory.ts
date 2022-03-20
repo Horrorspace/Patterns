@@ -1,6 +1,6 @@
 export type furnitureType = 'Sofa' | 'Chair' | 'Table';
 export type furnitureStyle = 'Modern' | 'Art deco' | 'Loft';
-export type furnitureColor = 'black' | 'White' | 'Silver';
+export type furnitureColor = 'black' | 'white' | 'silver';
 
 export interface FurnitureInfo {
     furnitureType: furnitureType;
@@ -9,6 +9,7 @@ export interface FurnitureInfo {
 }
 export interface IAbstractFurniture extends FurnitureInfo {
     getFurnitureInfo(): FurnitureInfo;
+    getFurnitureDescription(): string;
 }
 export interface AbstractSofa extends IAbstractFurniture {}
 export interface AbstractChair extends IAbstractFurniture {}
@@ -92,7 +93,7 @@ export class Table extends AbstractFurniture implements AbstractTable {
     }
 
     public getFurnitureDescription(): string {
-        return `This is the table in ${this._furnitureStyle} style`;
+        return `This is the ${this._furnitureColor} table in ${this._furnitureStyle} style`;
     }
 }
 
@@ -126,4 +127,19 @@ export class ArtDecoFactory extends AbstractFactory implements IAbstractFactory 
 }
 export class LoftFactory extends AbstractFactory implements IAbstractFactory {
     protected readonly _furnitureStyle: furnitureStyle = 'Loft';
+}
+
+export default function clientCode() {
+    const blackModernFactory = new ModernFactory('black');
+    const whiteModernFactory = new ModernFactory('white');
+    const whiteArtDecoFactory = new ArtDecoFactory('white');
+    const silverLoftFactory = new LoftFactory('silver');
+    const item1 = blackModernFactory.createChair();
+    const item2 = whiteModernFactory.createSofa();
+    const item3 = whiteArtDecoFactory.createTable();
+    const item4 = silverLoftFactory.createSofa();
+    const items = [item1, item2, item3, item4];
+    items.forEach(item => {
+        console.log(item.getFurnitureDescription());
+    })
 }

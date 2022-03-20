@@ -4,7 +4,8 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "node ./build/main.js"
+    "start": "node ./build/main.js",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
