@@ -1,28 +1,28 @@
-export type furnitureType = 'Sofa' | 'Chair' | 'Table';
-export type furnitureStyle = 'Modern' | 'Art deco' | 'Loft';
-export type furnitureColor = 'black' | 'white' | 'silver';
+type furnitureType = 'Sofa' | 'Chair' | 'Table';
+type furnitureStyle = 'Modern' | 'Art deco' | 'Loft';
+type furnitureColor = 'black' | 'white' | 'silver';
 
-export interface FurnitureInfo {
+interface FurnitureInfo {
     furnitureType: furnitureType;
     furnitureStyle: furnitureStyle;
     furnitureColor: furnitureColor;
 }
-export interface IAbstractFurniture extends FurnitureInfo {
+interface IAbstractFurniture extends FurnitureInfo {
     getFurnitureInfo(): FurnitureInfo;
     getFurnitureDescription(): string;
 }
-export interface AbstractSofa extends IAbstractFurniture {}
-export interface AbstractChair extends IAbstractFurniture {}
-export interface AbstractTable extends IAbstractFurniture {}
+interface AbstractSofa extends IAbstractFurniture {}
+interface AbstractChair extends IAbstractFurniture {}
+interface AbstractTable extends IAbstractFurniture {}
 
-export interface IAbstractFactory {
+interface IAbstractFactory {
     furnitureStyle: furnitureStyle
     createSofa(): AbstractSofa;
     createChair(): AbstractChair;
     createTable(): AbstractTable;
 }
 
-export abstract class AbstractFurniture implements IAbstractFurniture {
+abstract class AbstractFurniture implements IAbstractFurniture {
     protected abstract _furnitureType: furnitureType;
     protected _furnitureStyle: furnitureStyle;
     protected _furnitureColor: furnitureColor;
@@ -54,7 +54,7 @@ export abstract class AbstractFurniture implements IAbstractFurniture {
     }
     public abstract getFurnitureDescription(): string;
 }
-export class Sofa extends AbstractFurniture implements AbstractSofa {
+class Sofa extends AbstractFurniture implements AbstractSofa {
     protected _furnitureType: furnitureType = 'Sofa';
     
     constructor(
@@ -68,7 +68,7 @@ export class Sofa extends AbstractFurniture implements AbstractSofa {
         return `This is the sofa in ${this._furnitureStyle} style`;
     }
 }
-export class Chair extends AbstractFurniture implements AbstractChair {
+class Chair extends AbstractFurniture implements AbstractChair {
     protected _furnitureType: furnitureType = 'Chair';
     
     constructor(
@@ -82,7 +82,7 @@ export class Chair extends AbstractFurniture implements AbstractChair {
         return `This is the chair in ${this._furnitureStyle} style`;
     }
 }
-export class Table extends AbstractFurniture implements AbstractTable {
+class Table extends AbstractFurniture implements AbstractTable {
     protected _furnitureType: furnitureType = 'Table';
     
     constructor(
@@ -97,7 +97,7 @@ export class Table extends AbstractFurniture implements AbstractTable {
     }
 }
 
-export abstract class AbstractFactory implements IAbstractFactory {
+abstract class AbstractFactory implements IAbstractFactory {
     protected abstract readonly _furnitureStyle: furnitureStyle;
     protected _furnitureColor: furnitureColor;
 
@@ -119,13 +119,13 @@ export abstract class AbstractFactory implements IAbstractFactory {
         return new Table(this._furnitureStyle, this._furnitureColor);
     }
 }
-export class ModernFactory extends AbstractFactory implements IAbstractFactory {
+class ModernFactory extends AbstractFactory implements IAbstractFactory {
     protected readonly _furnitureStyle: furnitureStyle = 'Modern';
 }
-export class ArtDecoFactory extends AbstractFactory implements IAbstractFactory {
+class ArtDecoFactory extends AbstractFactory implements IAbstractFactory {
     protected readonly _furnitureStyle: furnitureStyle = 'Art deco';
 }
-export class LoftFactory extends AbstractFactory implements IAbstractFactory {
+class LoftFactory extends AbstractFactory implements IAbstractFactory {
     protected readonly _furnitureStyle: furnitureStyle = 'Loft';
 }
 
