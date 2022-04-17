@@ -22,17 +22,9 @@ abstract class Square {
     }
 }
 
-class RoundPeg extends Circle {
-    constructor(radius: number) {
-        super(radius);
-    }
-}
+class RoundPeg extends Circle {}
 
-class SquarePeg extends Square {
-    constructor(width: number) {
-        super(width);
-    }
-}
+class SquarePeg extends Square {}
 
 class RoundHole extends Circle {
     constructor(radius: number) {
