@@ -1,3 +1,3 @@
-import clientCode from './structural/Adapter';
+import clientCode from './structural/Bridge';
 
 clientCode();
