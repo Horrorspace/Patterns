@@ -1,3 +1,3 @@
-import clientCode from './Builder';
+import clientCode from './creational/Singleton';
 
 clientCode();
