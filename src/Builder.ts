@@ -120,6 +120,6 @@ export default function clientCode() {
     const carAutoBuilder = new CarAutoBuilder();
     const carManualBuilder = new CarManualBuilder();
     const director = new Director();
-    const sportCar = director.constructSportCar(carManualBuilder);
-    const regularCar = director.constructRegularCar(carAutoBuilder);
+    director.constructSportCar(carManualBuilder);
+    director.constructRegularCar(carAutoBuilder);
 }
